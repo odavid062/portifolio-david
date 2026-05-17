@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="David Rodrigues — Analista de Sistemas, Desenvolvedor com IA e Engenheiro de Prompt. Soluções com Java, Spring Boot, Angular e IA generativa." />
+<meta name="author" content="David Rodrigues" />
+<meta property="og:title" content="David Rodrigues — Prompt Engineer & Developer" />
+<meta property="og:description" content="Portfólio profissional de David Rodrigues — Analista de Sistemas, desenvolvedor e especialista em IA generativa." />
+<meta property="og:type" content="website" />
+<title>David Rodrigues — Prompt Engineer & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --bg-2: #0f1424;
+    --card: #131a2e;
+    --card-2: #1a2240;
+    --border: #232c4a;
+    --text: #e6e9f5;
+    --muted: #8b95b7;
+    --primary: #6366f1;
+    --primary-2: #8b5cf6;
+    --accent: #06d6a0;
+    --accent-2: #00d4ff;
+    --danger: #ef4444;
+    --shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Background animado */
+  .bg-gradient {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.22), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(139, 92, 246, 0.18), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(6, 214, 160, 0.13), transparent 40%),
+      radial-gradient(circle at 70% 10%, rgba(0, 212, 255, 0.12), transparent 30%);
+  }
+
+  .grid-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* NAVBAR */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    background: rgba(10, 14, 26, 0.45);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.18);
+    box-shadow:
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04),
+      0 4px 24px rgba(0, 0, 0, 0.35);
+    padding: 16px 0;
+  }
+
+  nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+  }
+
+  .logo span { color: var(--primary); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-text .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(6, 214, 160, 0.08);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(6, 214, 160, 0.28);
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 24px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .tag .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 .gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 50%, var(--accent-2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p.lead {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    color: white;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.5);
+  }
+
+  .btn-secondary {
+    background: var(--card);
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .btn-secondary:hover {
+    background: var(--card-2);
+    border-color: var(--primary);
+  }
+
+  .btn-whatsapp {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  }
+
+  .btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(37, 211, 102, 0.5);
+  }
+
+  /* Card de Stats no Hero */
+  .hero-card {
+    background: rgba(19, 26, 46, 0.38);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15),
+      0 20px 60px rgba(99, 102, 241, 0.2),
+      0 0 0 1px rgba(255, 255, 255, 0.03);
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 20px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary), transparent 50%, var(--accent));
+    -webkit-mask: linear-gradient(white, white) content-box, linear-gradient(white, white);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .terminal-header {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .terminal-header span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-header span:nth-child(1) { background: #ff5f57; }
+  .terminal-header span:nth-child(2) { background: #febc2e; }
+  .terminal-header span:nth-child(3) { background: #28c840; }
+
+  .terminal-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+  }
+
+  .terminal-code .key { color: var(--accent-2); }
+  .terminal-code .val { color: var(--accent); }
+  .terminal-code .str { color: #fbbf24; }
+  .terminal-code .com { color: #64748b; }
+  .terminal-code .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background: var(--primary);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* SEÇÕES */
+  section {
+    padding: 80px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--primary);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .section-header p {
+    color: var(--muted);
+    max-width: 600px;
+    margin: 12px auto 0;
+  }
+
+  /* SOBRE */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .about-text strong { color: var(--text); }
+
+  .info-card {
+    background: rgba(19, 26, 46, 0.38);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .info-card h3 {
+    font-size: 14px;
+    color: var(--primary);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-card ul {
+    list-style: none;
+  }
+
+  .info-card li {
+    padding: 8px 0;
+    color: var(--muted);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .info-card li::before {
+    content: '▸';
+    color: var(--accent);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-card {
+    background: rgba(19, 26, 46, 0.38);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .skill-card:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+    transform: translateY(-4px);
+    background: rgba(26, 34, 64, 0.48);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      0 20px 60px rgba(99, 102, 241, 0.22),
+      0 0 30px rgba(99, 102, 241, 0.08);
+  }
+
+  .skill-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  .skill-card h3 {
+    font-size: 17px;
+    margin-bottom: 12px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    background: rgba(26, 34, 64, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  /* EXPERIÊNCIA - TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary), var(--primary-2), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+    background: rgba(19, 26, 46, 0.35);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(99, 102, 241, 0.12);
+    border-radius: 14px;
+    padding: 20px 24px;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 4px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+  }
+
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .timeline-item h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .timeline-item .company {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .timeline-item p {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* CONTATO */
+  .contact-card {
+    background: rgba(19, 26, 46, 0.4);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1),
+      0 30px 80px rgba(99, 102, 241, 0.18);
+  }
+
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15), transparent 50%);
+    pointer-events: none;
+  }
+
+  .contact-card h2 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .contact-card p {
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  footer a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  /* RESPONSIVO */
+  @media (max-width: 768px) {
+    .nav-links {
+      position: fixed;
+      top: 65px;
+      left: 0;
+      right: 0;
+      background: rgba(10, 14, 26, 0.6);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      flex-direction: column;
+      padding: 24px;
+      gap: 16px;
+      transform: translateY(-150%);
+      transition: transform 0.3s;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.open { transform: translateY(0); }
+
+    .menu-toggle { display: block; }
+
+    .hero-grid,
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero { padding-top: 100px; }
+  }
+
+  /* Animações de entrada */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="grid-bg"></div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container">
+      <a href="#" class="logo">David Rodrigues</a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="tag">
+            <span class="dot"></span>
+            Disponível para novos projetos
+          </div>
+          <h1>
+            Olá, eu sou <span class="gradient">David Rodrigues</span>
+          </h1>
+          <p class="lead">
+            Analista de Sistemas, Desenvolvedor com IA e Engenheiro de Prompt.
+            Construo soluções que unem código limpo com o poder da inteligência artificial generativa.
+          </p>
+          <div class="hero-ctas">
+            <a href="#contato" class="btn btn-primary">
+              Entre em contato →
+            </a>
+            <a href="https://github.com/odavid062" target="_blank" rel="noopener" class="btn btn-secondary">
+              Ver GitHub
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="terminal-header">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="terminal-code">
+            <div><span class="com">// perfil.json</span></div>
+            <div>{</div>
+            <div>&nbsp;&nbsp;<span class="key">"nome"</span>: <span class="str">"David Rodrigues"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="key">"cargo"</span>: <span class="str">"Prompt Engineer &amp; Developer"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="key">"foco"</span>: [</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"IA Generativa"</span>,</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Prompt Engineering"</span>,</div>
+            <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Full Stack"</span></div>
+            <div>&nbsp;&nbsp;],</div>
+            <div>&nbsp;&nbsp;<span class="key">"local"</span>: <span class="str">"Goiânia, GO"</span>,</div>
+            <div>&nbsp;&nbsp;<span class="key">"status"</span>: <span class="val">"professional development"</span><span class="cursor"></span></div>
+            <div>}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">// 01. Sobre mim</div>
+        <h2>Quem sou eu</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            Sou <strong>Tecnólogo em Análise e Desenvolvimento de Sistemas</strong> pela Faculdade SENAC,
+            atuando como Analista de Sistemas com foco em soluções baseadas em <strong>Inteligência Artificial generativa</strong>.
+          </p>
+          <p>
+            Como <strong>Engenheiro de Prompt</strong>, projeto e otimizo instruções para modelos LLM
+            aplicados à automação de processos, suporte técnico e desenvolvimento de software. Combino
+            experiência prática em suporte, hardware e automação com sólida base em desenvolvimento
+            full stack (Java, Spring Boot, Angular, PostgreSQL, Docker).
+          </p>
+          <p>
+            Acredito em <strong>aprendizado contínuo</strong> como motor da carreira — estudo,
+            experimento e construo projetos para evoluir tecnicamente todos os dias.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>// Info rápida</h3>
+          <ul>
+            <li>Goiânia — GO</li>
+            <li>Aberto a remoto</li>
+            <li>Português nativo</li>
+            <li>35 anos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">// 02. Habilidades</div>
+        <h2>Stack & Ferramentas</h2>
+        <p>Tecnologias e práticas que uso para construir soluções</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">🤖</div>
+          <h3>IA & Prompt Engineering</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">ChatGPT</span>
+            <span class="skill-tag">Claude</span>
+            <span class="skill-tag">LLMs</span>
+            <span class="skill-tag">Prompt Design</span>
+            <span class="skill-tag">Automação IA</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">⚙️</div>
+          <h3>Automação & Workflows</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">n8n</span>
+            <span class="skill-tag">Integração APIs</span>
+            <span class="skill-tag">Webhooks</span>
+            <span class="skill-tag">Workflows IA</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">☕</div>
+          <h3>Back-end</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">REST APIs</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">⚡</div>
+          <h3>Front-end</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🗄️</div>
+          <h3>Banco de Dados</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Modelagem</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🐳</div>
+          <h3>DevOps & Ferramentas</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Linux</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🔧</div>
+          <h3>Suporte & Infra</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Redes</span>
+            <span class="skill-tag">Automação</span>
+            <span class="skill-tag">Hardware</span>
+            <span class="skill-tag">IR/RF/IP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section id="experiencia" class="reveal">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">// 03. Trajetória</div>
+        <h2>Experiência Profissional</h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">Abr/2026 — Atual</div>
+          <h3>Analista de Sistemas / Prompt Engineer & Developer</h3>
+          <div class="company">Criate Tecnologia · Engenheiro de Prompt</div>
+          <p>
+            Desenvolvimento de soluções com IA generativa, engenharia de prompt para LLMs
+            e construção de <strong>workflows de automação com n8n</strong> integrando APIs,
+            bancos de dados e modelos de IA para automatizar processos de negócio.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Abr/2025 — Abr/2026</div>
+          <h3>Auxiliar de Suporte Técnico</h3>
+          <div class="company">GCM Services LTDA</div>
+          <p>
+            Atendimento técnico em sistemas de automação residencial e comercial.
+            Programação de hubs e controladoras (IR, RF, IP), diagnóstico e suporte a usuários
+            em apps mobile (Android e iOS).
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Jan/2024 — Abr/2025</div>
+          <h3>Assistente de Manutenção em Consoles</h3>
+          <div class="company">L F Comércio & Assistência de Eletrônicos</div>
+          <p>
+            Manutenção em hardware de consoles, diagnóstico e reparo de componentes eletrônicos,
+            atendimento ao público e orientação técnica.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Conclusão</div>
+          <h3>Tecnologia em Análise e Desenvolvimento de Sistemas</h3>
+          <div class="company">Faculdade SENAC</div>
+          <p>
+            Formação superior em ADS — base em programação, banco de dados,
+            engenharia de software e desenvolvimento de aplicações.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="reveal">
+    <div class="container">
+      <div class="contact-card">
+        <h2>Vamos construir algo juntos?</h2>
+        <p>
+          Estou aberto a oportunidades como desenvolvedor, analista de sistemas
+          e projetos envolvendo IA generativa e automações.
+          <br><strong style="color: var(--accent);">Para projetos: WhatsApp é o canal mais rápido.</strong>
+        </p>
+        <div class="contact-links">
+          <a href="https://wa.me/5562994381279?text=Ol%C3%A1%20David!%20Vi%20sua%20landing%20page%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" class="btn btn-whatsapp">
+            ✆ WhatsApp
+          </a>
+          <a href="mailto:david.tdb21@hotmail.com" class="btn btn-primary">
+            ✉ E-mail
+          </a>
+          <a href="https://www.linkedin.com/in/david-rodrigues-00b988214/" target="_blank" rel="noopener" class="btn btn-secondary">
+            in LinkedIn
+          </a>
+          <a href="https://github.com/odavid062" target="_blank" rel="noopener" class="btn btn-secondary">
+            ⌘ GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 David Rodrigues · Construído com muito ☕ + IA</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
