@@ -37,11 +37,11 @@ O repositório está conectado à Vercel (projeto `portfolio-david`). Cada push 
 
 ## Estrutura
 
-- `index.html` — conteúdo da página, metadados de SEO e dados estruturados (Person e WebSite)
-- `style.css` — estilos
+- `index.html` — conteúdo da página, metadados de SEO, dados estruturados (Person e WebSite) e a arte do hero em SVG inline (fluxos de automação)
+- `style.css` — estilos, incluindo a animação dos pulsos da arte
 - `script.js` — menu mobile e animações de entrada
-- `hero.webp` — imagem principal
-- `og-image.jpg` — imagem de compartilhamento (1200×630), derivada de `hero.webp`
+- `og-image.jpg` — imagem de compartilhamento (1200×630) com a mesma arte do hero
+- `hero.webp` — foto usada no hero anterior; não é mais referenciada pela página
 - `robots.txt` e `sitemap.xml` — rastreamento e indexação
 - `vercel.json` — configuração de hospedagem
 - `README.md` — documentação do projeto
