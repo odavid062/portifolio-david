@@ -1,23 +1,26 @@
-# Portfólio — David Rodrigues
+# Landing — David Rodrigues
 
-Portfólio profissional de David Rodrigues, Software & AI Engineer júnior. O site apresenta experiência com aplicações web, automações com n8n, integrações de APIs, bancos de dados e inteligência artificial aplicada.
+Landing page comercial de David Rodrigues de Sousa. O site apresenta produtos digitais e soluções com software, inteligência artificial e automação.
 
 ## Acesso
 
-- Site: https://portfolio-david-swart-kappa.vercel.app/
+- Site: https://davidrodrigues.dev.br/
 - GitHub: https://github.com/odavid062
 - LinkedIn: https://www.linkedin.com/in/david-rodrigues-00b988214/
 
 ## Conteúdo
 
-- Apresentação profissional e contato
-- Habilidades em IA, automação, TypeScript, React, Java, Spring Boot, Supabase e PostgreSQL
-- Experiência na Criate Tecnologia em Marketing e Vendas e na Offworks Automação
-- Projeto ProvaLab, em desenvolvimento e com código privado
+- Plataforma de estudos para concursos: simulados, flashcards e desempenho
+- CRM com WhatsApp e IA: funil, etiquetas, follow-up e atendimento humano
+- Gestão financeira: despesas, cartões, parcelamentos, metas e dashboards
+- Agentes de IA, automações, integrações entre sistemas, aplicações e dashboards
+- Apresentação breve e contato
+
+A plataforma de estudos é uma aplicação separada, com repositório e deploy próprios. Este repositório contém apenas a landing.
 
 ## Tecnologias do site
 
-- HTML5, CSS3 responsivo e JavaScript puro
+- HTML5, CSS3 responsivo e JavaScript puro, sem etapa de build
 - Vercel para hospedagem e deploy contínuo
 
 ## Executar localmente
@@ -30,14 +33,17 @@ npx serve .
 
 ## Publicação
 
-O repositório está conectado à Vercel. Cada push para a branch `master` gera uma nova implantação automaticamente.
-
-O domínio personalizado planejado é `davidrodrigues.dev.br`, atualmente em configuração no Registro.br.
+O repositório está conectado à Vercel (projeto `portfolio-david`). Cada push para a branch `master` gera uma nova implantação de produção automaticamente, servida em `davidrodrigues.dev.br`. Pushes em outras branches geram implantações de preview.
 
 ## Estrutura
 
-- `index.html` — página completa, estilos e scripts
+- `index.html` — conteúdo da página, metadados de SEO e dados estruturados (Person e WebSite)
+- `style.css` — estilos
+- `script.js` — menu mobile e animações de entrada
+- `hero.webp` — imagem principal
+- `og-image.jpg` — imagem de compartilhamento (1200×630), derivada de `hero.webp`
+- `robots.txt` e `sitemap.xml` — rastreamento e indexação
 - `vercel.json` — configuração de hospedagem
 - `README.md` — documentação do projeto
 
-Para atualizar o conteúdo ou as cores, edite `index.html` e faça push para `master`.
+Para atualizar o conteúdo, edite `index.html` (e `style.css` para o visual) e faça push para `master`.
