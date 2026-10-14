@@ -10,13 +10,15 @@ Landing page comercial de David Rodrigues de Sousa. O site apresenta produtos di
 
 ## Conteúdo
 
-- Plataforma de estudos para concursos: simulados, flashcards e desempenho
+- Sapientia, plataforma de estudos para concursos (https://sapientia.davidrodrigues.dev.br): simulados, flashcards e desempenho
 - CRM com WhatsApp e IA: funil, etiquetas, follow-up e atendimento humano
 - Gestão financeira: despesas, cartões, parcelamentos, metas e dashboards
+- Malassombro, jogo de ação inspirado no folclore brasileiro, jogável no navegador (https://malassombro.davidrodrigues.dev.br)
+- Gestão para fisioterapia (em desenvolvimento): pacientes, agenda, tratamentos com contagem de sessões e mapa corporal 3D
 - Agentes de IA, automações, integrações entre sistemas, aplicações e dashboards
 - Apresentação breve e contato
 
-A plataforma de estudos é uma aplicação separada, com repositório e deploy próprios. Este repositório contém apenas a landing.
+A Sapientia, o jogo e o app de fisioterapia são aplicações separadas, com repositório e deploy próprios. Este repositório contém apenas a landing.
 
 ## Tecnologias do site
 
