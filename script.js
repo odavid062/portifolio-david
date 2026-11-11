@@ -9,3 +9,12 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:0.08});
  document.querySelectorAll('.reveal').forEach(element=>observer.observe(element));
 }
+
+const financePlatformCta = Array.from(document.querySelectorAll('a.product-cta'))
+ .find(link => link.textContent?.trim() === 'Quero conhecer a plataforma');
+
+if (financePlatformCta) {
+ financePlatformCta.href = 'https://financas.davidrodrigues.dev.br/';
+ financePlatformCta.removeAttribute('target');
+ financePlatformCta.removeAttribute('rel');
+}
